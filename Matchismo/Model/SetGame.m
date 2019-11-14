@@ -56,12 +56,12 @@ static const int MISMATCH_PENATLTY = 20;
     return _chosenCards;
 }
 
-
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
+    self.lastRoundMatchedCards = [[NSArray alloc] init];
     
-    if (!card.isMatched) {
+//    if (!card.isMatched) {
         if (card.isChosen) {
             [self.chosenCards removeObject:card];
             card.chosen = NO;
@@ -75,8 +75,8 @@ static const int MISMATCH_PENATLTY = 20;
                 self.score += roundScore;
                 
                 if (roundScore > 0) {
+                    self.lastRoundMatchedCards = [self.chosenCards copy];
                     [self.cards removeObjectsInArray:self.chosenCards];
-
                     self.chosenCards = nil;
                 } else {                    
                     for (Card *chosenCard in self.chosenCards) {
@@ -86,8 +86,8 @@ static const int MISMATCH_PENATLTY = 20;
                     self.chosenCards = nil;
                 }
             }
+//        }
         }
-    }
 }
 
 static const int SET_REWARD = 10;

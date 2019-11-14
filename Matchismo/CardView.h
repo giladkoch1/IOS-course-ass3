@@ -17,10 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) drawRect: (CGRect)rect;
 - (void)pushContextAndRotate;
 - (void)popContext;
-
 - (CGFloat) cornerScaleFactor;
 - (CGFloat) cornerRadius;
 - (CGFloat) cornerOffset;
+
+@property (nonatomic) BOOL isChosen;
+
 
 
 @end

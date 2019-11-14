@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSUInteger rank;
 @property (strong, nonatomic) NSString *suit;
-@property (nonatomic) BOOL faceUp;
 
 
 

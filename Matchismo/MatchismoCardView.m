@@ -49,14 +49,9 @@
     [self setNeedsDisplay];
 }
 
-- (void)setFaceUp:(BOOL)faceUp
-{
-    _faceUp = faceUp;
-    [self setNeedsDisplay];
-}
 
-- (void) setup
-{
+
+- (void) setup {
     self.backgroundColor = nil;
     self.opaque = NO;
     self.contentMode = UIViewContentModeRedraw;
@@ -68,7 +63,7 @@
     
     [self drawCorners];
     
-    if (self.faceUp) {
+    if (self.isChosen) {
         UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit]];
         if (faceImage) {
             CGRect imageRect = CGRectInset(self.bounds,
@@ -171,8 +166,7 @@
 
 - (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
                       verticalOffset:(CGFloat)voffset
-                  mirroredVertically:(BOOL)mirroredVertically
-{
+                  mirroredVertically:(BOOL)mirroredVertically {
     [self drawPipsWithHorizontalOffset:hoffset
                         verticalOffset:voffset
                             upsideDown:NO];
@@ -184,8 +178,7 @@
 }
 
 
-- (void) drawCorners
-{
+- (void)drawCorners {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     

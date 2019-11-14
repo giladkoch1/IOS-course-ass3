@@ -13,9 +13,19 @@
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) Deck *deck;
 @property (nonatomic, strong) NSArray *cards;
+
 @end
 
 @implementation CardGame
+
+- (NSArray *)lastRoundMatchedCards
+{
+    if (!_lastRoundMatchedCards) {
+        _lastRoundMatchedCards = [[NSArray alloc] init];
+    }
+    
+    return _lastRoundMatchedCards;
+}
 
 - (NSArray *) cards
 {

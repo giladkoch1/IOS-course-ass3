@@ -11,6 +11,7 @@
 		0E2BE36B237BE845004C284E /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE36A237BE845004C284E /* CardView.m */; };
 		0E2BE36E237BE868004C284E /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE36D237BE868004C284E /* SetCardView.m */; };
 		0E2BE371237C244A004C284E /* SetCardAttributesEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE370237C244A004C284E /* SetCardAttributesEnums.m */; };
+		0E2BE374237D6FB6004C284E /* CardViewAndAssociatedCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE373237D6FB6004C284E /* CardViewAndAssociatedCard.m */; };
 		0E598785237AF32E00D4CEFD /* MatchismoCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E598784237AF32E00D4CEFD /* MatchismoCardView.m */; };
 		0E640BF623707F9B006E33EC /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E640BF523707F9B006E33EC /* SetCardDeck.m */; };
 		0E640BF923707FBD006E33EC /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E640BF823707FBD006E33EC /* SetCard.m */; };
@@ -61,6 +62,8 @@
 		0E2BE36D237BE868004C284E /* SetCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
 		0E2BE36F237C244A004C284E /* SetCardAttributesEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardAttributesEnums.h; sourceTree = "<group>"; };
 		0E2BE370237C244A004C284E /* SetCardAttributesEnums.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetCardAttributesEnums.m; sourceTree = "<group>"; };
+		0E2BE372237D6FB6004C284E /* CardViewAndAssociatedCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardViewAndAssociatedCard.h; path = Matchismo/CardViewAndAssociatedCard.h; sourceTree = "<group>"; };
+		0E2BE373237D6FB6004C284E /* CardViewAndAssociatedCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardViewAndAssociatedCard.m; path = Matchismo/CardViewAndAssociatedCard.m; sourceTree = "<group>"; };
 		0E598783237AF32E00D4CEFD /* MatchismoCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchismoCardView.h; sourceTree = "<group>"; };
 		0E598784237AF32E00D4CEFD /* MatchismoCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchismoCardView.m; sourceTree = "<group>"; };
 		0E640BF423707F9B006E33EC /* SetCardDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardDeck.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 		0E6778052367521F00909A56 = {
 			isa = PBXGroup;
 			children = (
+				0E2BE372237D6FB6004C284E /* CardViewAndAssociatedCard.h */,
+				0E2BE373237D6FB6004C284E /* CardViewAndAssociatedCard.m */,
 				0E6778102367521F00909A56 /* Matchismo */,
 				0E67782C2367522100909A56 /* MatchismoTests */,
 				0E6778372367522100909A56 /* MatchismoUITests */,
@@ -388,6 +393,7 @@
 				0E6778132367521F00909A56 /* AppDelegate.m in Sources */,
 				0E640C0E237195A0006E33EC /* MachismoViewControler.m in Sources */,
 				0E6778242367522100909A56 /* main.m in Sources */,
+				0E2BE374237D6FB6004C284E /* CardViewAndAssociatedCard.m in Sources */,
 				0E6778162367521F00909A56 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

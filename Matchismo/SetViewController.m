@@ -10,6 +10,7 @@
 #import "SetCardDeck.h"
 #import "SetGame.h"
 #import "SetCard.h"
+#import "SetCardView.h"
 
 @interface SetViewController ()
 @property (strong, nonatomic) SetGame *game;
@@ -41,50 +42,54 @@
     return [UIImage imageNamed:card.isChosen ? @"setCardChosen" : @"setCardNeutral"];
 }
 
-- (NSMutableAttributedString *)titleForCard:(SetCard *)card
-{
-    NSString *tilteString = [[NSString alloc] init];
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     
-    for (int i = 0; i < card.numberOfShapes; i++) {
-        tilteString = [[NSString alloc] initWithFormat:@"%@%@", [SetCard shpaeStringFromShapeEnum:card.shape], tilteString];
+    //    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    if ([recognizer.view isKindOfClass:[CardView class]]) {
+        CardView *view = (CardView *)recognizer.view;
+        Card *associtedCard = [self getAssociatedCard:view];
+        associtedCard.chosen = !associtedCard.chosen;
+        CGFloat newAlpha = associtedCard.chosen ? 0.5 : 1.0;
+        
+        [UIView animateWithDuration:0.1 animations:^(){
+            view.alpha = newAlpha;
+        }];
     }
     
-    UIColor *color = [self colorFromShapeColorEnum:card.color withAlpha:card.shading];
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[[NSString alloc]initWithString:tilteString]];
-    [title setAttributes:@{NSStrokeWidthAttributeName: @-3,
-                           NSStrokeColorAttributeName: [color colorWithAlphaComponent:1],
-                           NSForegroundColorAttributeName: color
-    } range:NSMakeRange(0, [title length])];
-
-    return title;
+    [super handleSingleTap:recognizer];
 }
 
 
-
-- (UIColor *) colorFromShapeColorEnum:(ShapeColors) shapeColor withAlpha:(Shadings) alpha
+- (void) updateCardsViewAndAssociatedCards
 {
-    UIColor *color = [self colorFromShapeColorEnum:shapeColor];
-    return [color colorWithAlphaComponent:[SetCard alphaValueFromShadingEnum:alpha]];
-}
-
-
-- (UIColor *) colorFromShapeColorEnum:(ShapeColors) shapeColor
-{
-    UIColor *color = nil;
+    self.cardsLayoutGrid.minimumNumberOfCells = [self.game numberOfCards];
     
-    switch (shapeColor) {
-        case blue:
-            color = [UIColor blueColor];
-            break;
-        case green:
-            color = [UIColor greenColor];
-            break;
-        case purple:
-            color = [UIColor purpleColor];
-            break;
+    for (int i = 0; i < [self.game numberOfCards]; i++) {
+        SetCard *card = (SetCard *)[self.game cardAtIndex:i];
+        
+        int row = (int) (i / self.cardsLayoutGrid.columnCount);
+        int col = (int) (i - self.cardsLayoutGrid.columnCount * row);
+        CGRect cardFrame = [self.cardsLayoutGrid frameOfCellAtRow:row inColumn:col];
+        
+        SetCardView *cardView = [[SetCardView alloc] initWithFrame:cardFrame];
+        
+        UITapGestureRecognizer *singleFingerTap =
+          [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(handleSingleTap:)];
+        
+        [cardView addGestureRecognizer:singleFingerTap];
+        
+        cardView.numberOfShapes = card.numberOfShapes;
+        cardView.shading = card.shading;
+        cardView.shape = card.shape;
+        cardView.shapeColor = card.color;
+        
+        [self.cardLayoutBoundaries addSubview:cardView];
+        CardViewAndAssociatedCard *container = [[CardViewAndAssociatedCard alloc] init];
+        container.card = card;
+        container.view = cardView;
+        [self.viewsAndAssociatedCards addObject:container];
     }
-    
-    return color;
 }
 
 @end

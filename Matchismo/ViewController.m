@@ -17,11 +17,7 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) CardGame *game;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) Grid *cardsLayoutGrid;
-@property (weak, nonatomic) IBOutlet UIView *cardLayoutBoundaries;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-
 @property (weak, nonatomic) IBOutlet MatchismoCardView *testDelete;
 
 
@@ -33,6 +29,9 @@
 {
     return nil;
 }
+
+- (void)updateCardVies {}
+
 
 
 #define CARD_ASPECT_RATIO 2.0 / 3.0
@@ -50,15 +49,23 @@
     return _cardsLayoutGrid;
 }
 
--(Deck *)createDeck
+
+- (Deck *)createDeck
 {
     return nil;
 }
 
+- (NSMutableArray *)viewsAndAssociatedCards {
+    if (!_viewsAndAssociatedCards) {
+        _viewsAndAssociatedCards = [[NSMutableArray alloc] init];
+    }
+    
+    return _viewsAndAssociatedCards;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
+    [self updateCardsViewAndAssociatedCards];
 //    int cardCellRow = (int) 9 / self.cardsLayoutGrid.columnCount;
 //    int cardCellCol = (int) (9 - self.cardsLayoutGrid.columnCount * cardCellRow);
 //
@@ -69,51 +76,65 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    SetCardView *mv = [[SetCardView alloc] initWithFrame:[self.cardsLayoutGrid frameOfCellAtRow:0 inColumn:0]];
-    [self.cardLayoutBoundaries addSubview:mv];
-    mv.shading = solid;
-    mv.numberOfShapes = 3;
-    mv.shape = diamond;
-    mv.shapeColor = blue;
+- (void)viewWillAppear:(BOOL)animated {
+//    SetCardView *mv = [[SetCardView alloc] initWithFrame:[self.cardsLayoutGrid frameOfCellAtRow:0 inColumn:0]];
+//    [self.cardLayoutBoundaries addSubview:mv];
+//    mv.shading = stripe;
+//    mv.numberOfShapes = 3;
+//    mv.shape = squigle;
+//    mv.shapeColor = purple;
 }
 
-- (IBAction)touchCardButton:(UIButton *)sender {
-    NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
-    [self.game chooseCardAtIndex:chosenButtonIndex];
-    [self updateUi];
-}
 
-- (IBAction)resetGame:(id)sender
-{
+- (IBAction)resetGame:(id)sender {
     self.game = nil;
     [self updateUi];
     self.game = nil;
 }
 
-- (void)updateUi
-{
-    for (UIButton *cardButton in self.cardButtons) {
-        NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
-        Card *card = [self.game cardAtIndex:cardButtonIndex];
-        [cardButton setAttributedTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-        cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score %ld", self.game.score];
-    }
+- (void)updateCardsViewAndAssociatedCards {}
+
+- (void)updateUi {
+//    for (CardViewAndAssociatedCard *container in self.viewsAndAssociatedCards) {
+//        NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+//        Card *card = [self.game cardAtIndex:cardButtonIndex];
+//        [cardButton setAttributedTitle:[self titleForCard:card] forState:UIControlStateNormal];
+//        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+//        cardButton.enabled = !card.isMatched;
+//        self.scoreLabel.text = [NSString stringWithFormat:@"Score %ld", self.game.score];
+//    }
+}
+
+- (void) translatedAndScaledTransformUsingViewRect:(CardView *)view fromRect:(CGRect)fromRect {
+    CGRect viewRect = view.accessibilityFrame;
+    
+    CGSize scales = CGSizeMake(viewRect.size.width/fromRect.size.width, viewRect.size.height/fromRect.size.height);
+    CGPoint offset = CGPointMake(CGRectGetMidX(viewRect) - CGRectGetMidX(fromRect), CGRectGetMidY(viewRect) - CGRectGetMidY(fromRect));
+    view.transform = CGAffineTransformMake(scales.width, 0, 0, scales.height, offset.x, offset.y);
 }
 
 
-- (NSMutableAttributedString *)titleForCard:(Card *)card
-{
+- (NSMutableAttributedString *)titleForCard:(Card *)card {
     return nil;
 }
 	
-- (UIImage *)backgroundImageForCard:(Card *)card
-{
+- (UIImage *)backgroundImageForCard:(Card *)card {
     return nil;
 }
 
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {}
+
+
+- (Card *)getAssociatedCard: (CardView *)cardView {
+    Card *card;
+    
+    for (CardViewAndAssociatedCard * container in self.viewsAndAssociatedCards) {
+        if (cardView == container.view) {
+            card = container.card;
+        }
+    }
+    
+    return card;
+}
 
 @end

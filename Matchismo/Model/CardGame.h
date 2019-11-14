@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) redeal;
 - (NSUInteger) numberOfCards;
 
+
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic, strong) NSArray *lastRoundMatchedCards;
 
 @end
 
