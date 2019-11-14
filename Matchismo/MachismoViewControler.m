@@ -19,11 +19,12 @@
 
 @implementation MachismoViewControler
 
+#define INIT_CARD_COUNT 15
 
 - (MatchismoGame *) game
 {
     if(!_game) {
-        _game = [[MatchismoGame alloc] initWithCardCount:[self.cardButtons count]
+        _game = [[MatchismoGame alloc] initWithCardCount:INIT_CARD_COUNT
                                                              usingDeck:[self createDeck] numCardsToMatch:2];
     }
     
@@ -45,9 +46,5 @@
     return [[NSMutableAttributedString alloc] initWithString: card.isChosen ? card.contents : @""];
 }
 
-- (NSMutableAttributedString *)singleRoundSummaryAsAttributedString:(Card *)card
-{
-    return [[NSMutableAttributedString alloc] initWithString:self.game.lastRoundSummary];
-}
 
 @end

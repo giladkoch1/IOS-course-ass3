@@ -8,7 +8,6 @@
 
 #import "MatchismoGame.h"
 #import "PlayingCard.h"
-#import "CardGameRoundHistory.h"
 
 @interface MatchismoGame()
 @property (nonatomic, readwrite) NSInteger score;

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Deck.h"
-#import "CardGameRoundHistory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,12 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
                          usingDeck: (Deck *)deck numCardsToMatch: (NSUInteger) numCardsToMatch;
 - (void) chooseCardAtIndex: (NSUInteger) index;
 - (Card *) cardAtIndex:(NSUInteger) index;
-- (void)updateGameRoundsSummaries;
 - (void) redeal;
+- (NSUInteger) numberOfCards;
 
 @property (nonatomic, readonly) NSInteger score;
-@property (nonatomic, readonly) CardGameRoundHistory *lastRoundSummary;
-@property (nonatomic, readonly) NSMutableArray *gameSummariesHistory;
 
 @end
 

@@ -7,15 +7,12 @@
 //
 
 #import "CardGame.h"
-#import "CardGameRoundHistory.h"
 #import "Deck.h"
 @interface CardGame()
 
 @property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, readwrite) CardGameRoundHistory *lastRoundSummary;
 @property (nonatomic, strong) Deck *deck;
 @property (nonatomic, strong) NSArray *cards;
-@property (nonatomic, readwrite) NSMutableArray * gameSummariesHistory;
 @end
 
 @implementation CardGame
@@ -29,16 +26,13 @@
     return _cards;
 }
 
+- (NSUInteger)numberOfCards
+{
+    return [self.cards count];
+}
+
 - (void)redeal { }
 
-- (NSMutableArray *) gameSummariesHistory
-{
-    if (!_gameSummariesHistory) {
-        _gameSummariesHistory = [[NSMutableArray alloc] init];
-    }
-    
-    return _gameSummariesHistory;
-}
 - (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck numCardsToMatch:(NSUInteger)numCardsToMatch
 {
     self = [super init];
@@ -64,27 +58,7 @@
 
 - (void)chooseCardAtIndex:(NSUInteger)index{}
 
-- (CardGameRoundHistory *)lastRoundSummary
-{
-    return [self.gameSummariesHistory lastObject];
-}
-
-- (void) setLastRoundSummary:(CardGameRoundHistory *)lastRoundSummary
-{
-    [self.gameSummariesHistory addObject:lastRoundSummary];
-}
-
 static const int MAX_ROUNDS_SAMMARIES = 30;
-
-
-- (void)updateGameRoundsSummaries
-{
-    if ([self.gameSummariesHistory count] > MAX_ROUNDS_SAMMARIES) {
-        [self.gameSummariesHistory removeObjectAtIndex:0];
-    }
-    
-    [self.gameSummariesHistory addObject:self.lastRoundSummary];
-}
 
 - (Card *)cardAtIndex:(NSUInteger)index
 {

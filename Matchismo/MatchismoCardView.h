@@ -7,15 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PlayingCardView : UIView
+@interface MatchismoCardView : CardView
 
 
 @property (nonatomic) NSUInteger rank;
 @property (strong, nonatomic) NSString *suit;
 @property (nonatomic) BOOL faceUp;
+
+
 
 @end
 

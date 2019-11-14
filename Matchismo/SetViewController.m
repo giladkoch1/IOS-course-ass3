@@ -19,11 +19,12 @@
 
 @implementation SetViewController
 
+#define INIT_CARD_COUNT 12
 
 - (SetGame *) game
 {
  if(!_game) {
-        _game = [[SetGame alloc] initWithCardCount:[self.cardButtons count]
+        _game = [[SetGame alloc] initWithCardCount:INIT_CARD_COUNT
                                                              usingDeck:[self createDeck] numCardsToMatch:0];
     }
     
@@ -60,7 +61,7 @@
 
 
 
-- (UIColor *) colorFromShapeColorEnum:(ShapeColors) shapeColor withAlpha:(Shading) alpha
+- (UIColor *) colorFromShapeColorEnum:(ShapeColors) shapeColor withAlpha:(Shadings) alpha
 {
     UIColor *color = [self colorFromShapeColorEnum:shapeColor];
     return [color colorWithAlphaComponent:[SetCard alphaValueFromShadingEnum:alpha]];

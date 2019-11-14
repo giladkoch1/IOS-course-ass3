@@ -8,7 +8,6 @@
 
 #import "SetCardDeck.h"
 #import "SetCard.h"
-#import "SetCardShape.h"
 
 @implementation SetCardDeck
 

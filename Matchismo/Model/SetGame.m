@@ -8,7 +8,6 @@
 
 #import "SetGame.h"
 #import "SetCard.h"
-#import "CardGameRoundHistory.h"
 
 @interface SetGame()
 @property (nonatomic, readwrite) NSInteger score;
@@ -20,8 +19,6 @@
 @end
 
 @implementation SetGame
-
-@synthesize lastRoundSummary = _lastRoundSummary;
 
 static const int SET_GAME_NUM_CARDS_TO_MATCH = 3;
 static const int MISMATCH_PENATLTY = 20;
@@ -63,8 +60,6 @@ static const int MISMATCH_PENATLTY = 20;
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
-    CardGameRoundHistory *lastRoundSummary = [[CardGameRoundHistory alloc] init];
-    
     
     if (!card.isMatched) {
         if (card.isChosen) {
@@ -77,7 +72,6 @@ static const int MISMATCH_PENATLTY = 20;
                         
             if ([self.chosenCards count] == SET_GAME_NUM_CARDS_TO_MATCH) {
                 int roundScore = [self match:self.chosenCards];
-                lastRoundSummary.roundScore = roundScore;
                 self.score += roundScore;
                 
                 if (roundScore > 0) {

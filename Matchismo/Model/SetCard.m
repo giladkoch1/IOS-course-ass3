@@ -10,9 +10,9 @@
 
 @interface SetCard()
 
-+ (NSString *) cardShadingStringFromAlpha: (Shading)alphaValue;
++ (NSString *) cardShadingStringFromAlpha: (Shadings)alphaValue;
 + (NSString *) colorStringFromShapeColorEnum:(ShapeColors) shapeColor;
-+ (float) alphaValueFromShadingEnum: (Shading) shading;
++ (float) alphaValueFromShadingEnum: (Shadings) shading;
 + (NSString *)shpaeStringFromShapeEnum:(Shapes)shape;
 
 @end
@@ -24,7 +24,7 @@
     return 3;
 }
 
-+ (NSString *) cardShadingStringFromAlpha: (Shading)alphaValue
++ (NSString *) cardShadingStringFromAlpha: (Shadings)alphaValue
 {
     NSString *shading;
     
@@ -62,7 +62,7 @@
     return colorString;
 }
 
-+ (float) alphaValueFromShadingEnum: (Shading) shading
++ (float) alphaValueFromShadingEnum: (Shadings) shading
 {
     float alpha;
     
@@ -86,13 +86,13 @@
     NSString *shapeString;
     
     switch (shape) {
-        case circle:
+        case squigle:
             shapeString = @"●";
             break;
-        case square:
+        case diamond:
             shapeString = @"■";
             break;
-        case triangle:
+        case oval:
             shapeString = @"▲";
             break;
     }

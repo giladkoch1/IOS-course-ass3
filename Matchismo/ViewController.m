@@ -10,15 +10,21 @@
 #import "MatchismoCardDeck.h"
 #import "PlayingCard.h"
 #import "MatchismoGame.h"
-#import "GameHistoryViewController.h"
-#import "CardGameRoundHistory.h"
 #import "Grid.h"
+#import "MatchismoCardView.h"
+#import "SetCardView.h"
+#import "SetCardAttributesEnums.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) CardGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) Grid *cardsLayoutGrid;
+@property (weak, nonatomic) IBOutlet UIView *cardLayoutBoundaries;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+@property (weak, nonatomic) IBOutlet MatchismoCardView *testDelete;
+
+
 @end
 
 @implementation ViewController
@@ -28,16 +34,21 @@
     return nil;
 }
 
-//- (Grid *)cardsLayoutGrid
-//{
-//    _cardsLayoutGrid = [[Grid alloc] init];
-//    _cardsLayoutGrid.size = self.
-//}
 
-//- (NSUInteger) numCardsToMatch
-//{
-//    return [[self.gameModeSegmentControl titleForSegmentAtIndex:self.gameModeSegmentControl.selectedSegmentIndex]substringToIndex:1].intValue;
-//}
+#define CARD_ASPECT_RATIO 2.0 / 3.0
+
+- (Grid *)cardsLayoutGrid
+{
+    if (!_cardsLayoutGrid) {
+        _cardsLayoutGrid = [[Grid alloc] init];
+        _cardsLayoutGrid.size = self.cardLayoutBoundaries.bounds.size;
+        _cardsLayoutGrid.cellAspectRatio = CARD_ASPECT_RATIO;
+    }
+    
+    _cardsLayoutGrid.minimumNumberOfCells = self.game.numberOfCards;
+    
+    return _cardsLayoutGrid;
+}
 
 -(Deck *)createDeck
 {
@@ -46,8 +57,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self updateUi];
+    
+
+//    int cardCellRow = (int) 9 / self.cardsLayoutGrid.columnCount;
+//    int cardCellCol = (int) (9 - self.cardsLayoutGrid.columnCount * cardCellRow);
+//
+    //    CGRect rect = [self.cardsLayoutGrid frameOfCellAtRow:cardCellRow inColumn:cardCellCol];
+    
+    
+    //    [self updateUi];
     // Do any additional setup after loading the view.
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    SetCardView *mv = [[SetCardView alloc] initWithFrame:[self.cardsLayoutGrid frameOfCellAtRow:0 inColumn:0]];
+    [self.cardLayoutBoundaries addSubview:mv];
+    mv.shading = solid;
+    mv.numberOfShapes = 3;
+    mv.shape = diamond;
+    mv.shapeColor = blue;
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
@@ -61,18 +90,6 @@
     self.game = nil;
     [self updateUi];
     self.game = nil;
-}
-
-- (NSAttributedString *) historyAttributedString: (NSMutableArray *) gameHistory
-{
-    NSMutableAttributedString *historyAttributedString = [[NSMutableAttributedString alloc] init];
-    
-    for (CardGameRoundHistory *roundHistory in gameHistory) {
-        [historyAttributedString appendAttributedString:[self singleRoundSummaryAsAttributedString: roundHistory]];
-        [historyAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Score %ld\n", roundHistory.roundScore]]];
-    }
-    
-    return historyAttributedString;
 }
 
 - (void)updateUi
@@ -96,18 +113,6 @@
 - (UIImage *)backgroundImageForCard:(Card *)card
 {
     return nil;
-}
-
-- (NSMutableAttributedString *)singleRoundSummaryAsAttributedString:(CardGameRoundHistory *)lastRoundSummary
-{
-    NSMutableAttributedString *labelAttributedString = [[NSMutableAttributedString alloc] init];
-    
-    for (Card *card in lastRoundSummary.roundCards) {
-        [labelAttributedString appendAttributedString:[self titleForCard:card]];
-        [labelAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
-    }
-    
-    return labelAttributedString;
 }
 
 

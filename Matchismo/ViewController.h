@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 #import "Card.h"
-#import "CardGameRoundHistory.h"
 @interface ViewController : UIViewController
 
-- (Deck *) createDeck;
-- (NSUInteger) numCardsToMatch;
-- (NSMutableAttributedString *) singleRoundSummaryAsAttributedString: (CardGameRoundHistory*)card;
+- (Deck *)  createDeck;
+
+@property (nonatomic, strong) NSArray * CardViews;
+
 @end
 
