@@ -147,7 +147,10 @@
     
 #define PIP_FONT_SCALE_FACTOR 0.17
     
-    if (upsideDown) [self pushContextAndRotate];
+    if (upsideDown) {
+        [self pushContext];
+        [self rotate];
+    }
     CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
     UIFont *pipFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
     NSAttributedString *attributedSuit = [[NSAttributedString alloc] initWithString:self.suit attributes:@{ NSFontAttributeName : pipFont }];
@@ -193,7 +196,8 @@
     textBounds.size = [cornerText size];
     [cornerText drawInRect:textBounds];
     
-    [self pushContextAndRotate];
+    [self pushContext];
+    [self rotate];
     [cornerText drawInRect:textBounds];
     [self popContext];
 }

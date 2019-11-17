@@ -19,23 +19,7 @@
 
 @implementation MatchismoGame
 
-- (NSMutableArray *) cards
-{
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc] init];
-    }
-    
-    return _cards;
-}
-
-
-- (void)redeal
-{
-    
-}
-
-- (NSMutableArray *) chosenUnmatchedCards
-{
+- (NSMutableArray *)chosenUnmatchedCards {
     if (!_chosenUnmatchedCards) {
         _chosenUnmatchedCards = [[NSMutableArray alloc] init];
     }
@@ -49,10 +33,7 @@ static const int MISMATCH_PENATLTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
-- (void) chooseCardAtIndex:(NSUInteger)index
-{
-    Card *card = [self cardAtIndex:index];
-    
+- (void) playCard:(Card *)card {
     if (!card.isMatched) {
         if (card.isChosen) {
             [self.chosenUnmatchedCards removeObject:card];
@@ -72,7 +53,7 @@ static const int COST_TO_CHOOSE = 1;
                     }
                     
                     card.matched = YES;
-                    //[self.chosenUnmatchedCards removeAllObjects];
+                    [self.chosenUnmatchedCards removeObjectsInArray:self.chosenUnmatchedCards];
                     self.chosenUnmatchedCards = nil;
                 } else {
                     self.score -= MISMATCH_PENATLTY;
@@ -93,8 +74,7 @@ static const int COST_TO_CHOOSE = 1;
     }
 }
 
-- (int)match:(NSArray *)cards
-{
+- (int)match:(NSArray *)cards {
     int score = 0;
     
     for (int i = 0; i < [cards count] - 1; i++) {

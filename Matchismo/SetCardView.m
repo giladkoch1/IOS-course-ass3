@@ -83,7 +83,6 @@ static const float kroundedRectHeight = 0.2;
 
 - (UIBezierPath *) drawShapes{
     UIBezierPath *path = [[UIBezierPath alloc] init];
-    CGRect imageRect;
     
     if (self.numberOfShapes == 1) {
         [path appendPath:[self drawShapeWithRectBounds:CGRectMake([self shapeOriginX] ,

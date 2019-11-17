@@ -15,14 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithCardCount: (NSUInteger) count
                          usingDeck: (Deck *)deck numCardsToMatch: (NSUInteger) numCardsToMatch;
-- (void) chooseCardAtIndex: (NSUInteger) index;
+- (void) playCard: (Card *) card;
 - (Card *) cardAtIndex:(NSUInteger) index;
-- (void) redeal;
-- (NSUInteger) numberOfCards;
+- (NSUInteger) indexOfCard:(Card *)card;
+- (NSArray *) dealCards: (NSUInteger)numCards;
+- (NSUInteger) numOfCards;
 
 
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic, strong) NSArray *lastRoundMatchedCards;
+@property (nonatomic, readonly) NSMutableArray *cards;
+
 
 @end
 

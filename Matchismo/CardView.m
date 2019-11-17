@@ -58,11 +58,14 @@
 }
 
 
-- (void)pushContextAndRotate
+- (void)pushContext
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
-    
+}
+
+- (void)rotate {
+    CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
     CGContextRotateCTM(context, M_PI);
 }

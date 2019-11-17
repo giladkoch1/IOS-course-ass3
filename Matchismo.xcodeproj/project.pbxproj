@@ -138,6 +138,12 @@
 		0E2288C72370614500EFB7C5 /* Controlers */ = {
 			isa = PBXGroup;
 			children = (
+				0E640C0C237195A0006E33EC /* MachismoViewControler.h */,
+				0E640C0D237195A0006E33EC /* MachismoViewControler.m */,
+				0E6778172367521F00909A56 /* ViewController.h */,
+				0E6778182367521F00909A56 /* ViewController.m */,
+				0E640C092371951E006E33EC /* SetViewController.h */,
+				0E640C0A2371951E006E33EC /* SetViewController.m */,
 			);
 			path = Controlers;
 			sourceTree = "<group>";
@@ -167,20 +173,13 @@
 		0E6778102367521F00909A56 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				0EF9E0D9238198C500833390 /* Third Party */,
 				0E2288C72370614500EFB7C5 /* Controlers */,
 				0ED0F9C02368558800BD4700 /* Model */,
 				0E6778112367521F00909A56 /* AppDelegate.h */,
 				0E6778122367521F00909A56 /* AppDelegate.m */,
-				0E2266E2237AB88E001DAD0A /* Grid.h */,
-				0E2266E3237AB88F001DAD0A /* Grid.m */,
-				0E640C0C237195A0006E33EC /* MachismoViewControler.h */,
-				0E640C0D237195A0006E33EC /* MachismoViewControler.m */,
 				0E640C00237083D6006E33EC /* CardGameSelectorViewController.h */,
 				0E640C01237083D6006E33EC /* CardGameSelectorViewController.m */,
-				0E6778172367521F00909A56 /* ViewController.h */,
-				0E6778182367521F00909A56 /* ViewController.m */,
-				0E640C092371951E006E33EC /* SetViewController.h */,
-				0E640C0A2371951E006E33EC /* SetViewController.m */,
 				0E67781A2367521F00909A56 /* Main.storyboard */,
 				0E2BE369237BE845004C284E /* CardView.h */,
 				0E2BE36A237BE845004C284E /* CardView.m */,
@@ -241,6 +240,15 @@
 				0E640BF823707FBD006E33EC /* SetCard.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0EF9E0D9238198C500833390 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				0E2266E2237AB88E001DAD0A /* Grid.h */,
+				0E2266E3237AB88F001DAD0A /* Grid.m */,
+			);
+			name = "Third Party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

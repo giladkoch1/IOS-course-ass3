@@ -12,11 +12,13 @@
 
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) Deck *deck;
-@property (nonatomic, strong) NSArray *cards;
+@property (nonatomic, readwrite) NSMutableArray *cards;
 
 @end
 
 @implementation CardGame
+
+@synthesize cards = _cards;
 
 - (NSArray *)lastRoundMatchedCards
 {
@@ -27,7 +29,7 @@
     return _lastRoundMatchedCards;
 }
 
-- (NSArray *) cards
+- (NSMutableArray *)cards
 {
     if (!_cards) {
         _cards = [[NSMutableArray alloc] init];
@@ -36,37 +38,47 @@
     return _cards;
 }
 
-- (NSUInteger)numberOfCards
+- (void)setCards:(NSMutableArray *)cards {
+    _cards = cards;
+}
+
+- (NSUInteger)indexOfCard:(Card *)card {
+    return [self.cards indexOfObject:card];
+}
+
+- (NSUInteger)numOfCards
 {
     return [self.cards count];
 }
 
-- (void)redeal { }
+- (NSArray *) dealCards: (NSUInteger)numCards {
+    NSMutableArray *newCards = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < numCards; i++) {
+        Card *card = [self.deck drawRandomCard];
+        
+        if (card) {
+            [newCards addObject:card];
+        } else {
+            break;
+        }
+        
+    }
+    
+    [self.cards addObjectsFromArray:newCards];
+    return newCards;
+}
 
 - (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck numCardsToMatch:(NSUInteger)numCardsToMatch
 {
     self = [super init];
     self.deck = deck;
-    NSMutableArray *cards = [[NSMutableArray alloc] init];
-
-    if (self) {
-        for (int i = 0; i < count; i++) {
-            Card * card = [deck drawRandomCard];
-            if (card) {
-                [cards addObject:card];
-            } else {
-                self = nil;
-                break;
-            }
-        }
-    }
-    
-    self.cards = [cards copy];
-
     return self;
 }
 
-- (void)chooseCardAtIndex:(NSUInteger)index{}
+- (void)playCard:(Card *)index{
+    
+}
 
 static const int MAX_ROUNDS_SAMMARIES = 30;
 

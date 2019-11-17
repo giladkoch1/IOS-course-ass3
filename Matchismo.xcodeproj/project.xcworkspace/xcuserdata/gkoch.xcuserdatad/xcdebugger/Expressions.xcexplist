@@ -3,7 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[ViewController testDelete]:ViewController.m">
+         contextName = "-[CardGame numOfCards]:CardGame.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.cards count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[CardGame dealCards:]:CardGame.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.cards addObject:card]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController animateCards:]:ViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController cardsLayoutGrid]:ViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController updateUi]:ViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController viewWillAppear:]:ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.testDelete">
+            </PersistentString>
+            <PersistentString
+               value = "mv.bounds">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[SetCardView ovalShpes]:SetCardView.m">
@@ -25,15 +58,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[ViewController viewWillAppear:]:ViewController.m">
+         contextName = "-[CardView drawRect:]:CardView.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.testDelete">
-            </PersistentString>
-            <PersistentString
-               value = "mv.bounds">
+               value = "self.bounds">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController testDelete]:ViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[ViewController viewDidLoad]:ViewController.m">
@@ -47,10 +80,40 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[CardView drawRect:]:CardView.m">
+         contextName = "-[ViewController animateCardMovement:]:ViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.bounds">
+               value = "container.view.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__38-[ViewController animateCardMovement:]_block_invoke.77:ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "container.view.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MachismoViewControler animateCards]:MachismoViewControler.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "newCardView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__37-[MachismoViewControler animateCards]_block_invoke:MachismoViewControler.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "newCardView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "container.view.frame">
+            </PersistentString>
+            <PersistentString
+               value = "newFrame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

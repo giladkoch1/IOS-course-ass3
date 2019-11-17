@@ -11,7 +11,6 @@
 
 @interface SetGame()
 @property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, strong) NSMutableArray *cards;
 @property (nonatomic, strong) Deck *deck;
 @property (nonatomic, strong) NSMutableArray *chosenCards;
 
@@ -23,31 +22,7 @@
 static const int SET_GAME_NUM_CARDS_TO_MATCH = 3;
 static const int MISMATCH_PENATLTY = 20;
 
-
-- (void) redeal
-{
-    Card *newDealtCard;
-    
-    for (int i = 0; i < SET_GAME_NUM_CARDS_TO_MATCH; i++) {
-        newDealtCard = [self.deck drawRandomCard];
-        
-        if (newDealtCard) {
-            [self.cards addObject:newDealtCard];
-        }
-    }
-}
-
-- (NSMutableArray *) cards
-{
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc] init];
-    }
-    
-    return _cards;
-}
-
-
-- (NSMutableArray *) chosenCards
+- (NSMutableArray *)chosenCards
 {
     if (!_chosenCards) {
         _chosenCards = [[NSMutableArray alloc] init];
@@ -56,9 +31,8 @@ static const int MISMATCH_PENATLTY = 20;
     return _chosenCards;
 }
 
-- (void)chooseCardAtIndex:(NSUInteger)index
+- (void)playCard:(Card *)card
 {
-    Card *card = [self cardAtIndex:index];
     self.lastRoundMatchedCards = [[NSArray alloc] init];
     
 //    if (!card.isMatched) {
@@ -76,6 +50,9 @@ static const int MISMATCH_PENATLTY = 20;
                 
                 if (roundScore > 0) {
                     self.lastRoundMatchedCards = [self.chosenCards copy];
+                    for (Card *chosenCard in self.chosenCards) {
+                        chosenCard.matched = YES;
+                    }
                     [self.cards removeObjectsInArray:self.chosenCards];
                     self.chosenCards = nil;
                 } else {                    

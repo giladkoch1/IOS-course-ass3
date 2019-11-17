@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c92aacae-b39e-46dd-aaa8-55832f6ad19f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Matchismo.xcodeproj/project.xcworkspace/xcuserdata/gkoch.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo.xcodeproj/project.xcworkspace/xcuserdata/gkoch.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo.xcodeproj/xcuserdata/gkoch.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo.xcodeproj/xcuserdata/gkoch.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/Model/CardGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/Model/CardGame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/Model/CardGame.m" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/Model/CardGame.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/Model/MatchismoGame.m" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/Model/MatchismoGame.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/Model/SetGame.m" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/Model/SetGame.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/SetViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/SetViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/ViewController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/ViewController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matchismo/ViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/Matchismo/ViewController.m" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_420D6E14-3E09-4F8D-B193-A769BA91A209" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -10,10 +30,50 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Application.Matchismo">
     <list>
       <item itemvalue="Application.Matchismo" />
       <item itemvalue="Application.Matchismo 1" />
     </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c92aacae-b39e-46dd-aaa8-55832f6ad19f" name="Default Changelist" comment="" />
+      <created>1573974013618</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573974013618</updated>
+      <workItem from="1573974017083" duration="66000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

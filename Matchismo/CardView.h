@@ -15,8 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CardView : UIView
 
 - (void) drawRect: (CGRect)rect;
-- (void)pushContextAndRotate;
+- (void)pushContext;
 - (void)popContext;
+- (void)rotate;
 - (CGFloat) cornerScaleFactor;
 - (CGFloat) cornerRadius;
 - (CGFloat) cornerOffset;
